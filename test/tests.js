@@ -1637,4 +1637,36 @@ describe('Collect.js Test Suite', function () {
     expect(tapped).to.eql([2, 3, 4, 5]);
     expect(number).to.eql(1);
   });
+
+  it('should append the values of the given collection or array to the current collection', function () {
+    const collection1 = collect([
+      { 'name': 'Bookcase', 'colors': ['Red', 'Beige', 'Brown'] },
+      { 'name': 'Chair', 'colors': ['Black'] },
+      { 'name': 'Desk', 'colors': ['Black', 'Mahogany'] },
+    ]);
+    const collection2 = collect([
+      { 'name': 'Bookcase', 'colors': ['Red', 'Beige', 'Brown'] },
+      { 'name': 'Chair', 'colors': ['Black'] },
+      { 'name': 'Desk', 'colors': ['Black', 'Mahogany'] },
+    ]);
+    const array2 = [4,2,13,5];
+
+    expect(collection1.concat(collection2).all()).to.eql([
+      { 'name': 'Bookcase', 'colors': ['Red', 'Beige', 'Brown'] },
+      { 'name': 'Chair', 'colors': ['Black'] },
+      { 'name': 'Desk', 'colors': ['Black', 'Mahogany'] },
+      { 'name': 'Bookcase', 'colors': ['Red', 'Beige', 'Brown'] },
+      { 'name': 'Chair', 'colors': ['Black'] },
+      { 'name': 'Desk', 'colors': ['Black', 'Mahogany'] },
+    ]);
+    expect(collection1.concat(array2).all()).to.eql([
+      { 'name': 'Bookcase', 'colors': ['Red', 'Beige', 'Brown'] },
+      { 'name': 'Chair', 'colors': ['Black'] },
+      { 'name': 'Desk', 'colors': ['Black', 'Mahogany'] },
+      4,
+      2,
+      13,
+      5,
+    ]);
+  });
 });
