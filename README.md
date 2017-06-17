@@ -23,6 +23,7 @@ All available methods
 - [chunk](#chunk)
 - [collapse](#collapse)
 - [combine](#combine)
+- [concat](#concat)
 - [contains](#contains)
 - [count](#count)
 - [diff](#diff)
@@ -183,6 +184,17 @@ combine.all();
 //=>   name: 'Steven Gerrard',
 //=>   number: 8
 //=> }
+```
+#### ``concat()``
+With concat you can append values of an array or collection to the current collection without regard to the keys:
+```js
+const collection = collect([
+  {place: 'Serenity'},
+  {name: 'Tortoise'},
+]);
+
+collection.concat([5, 4, 3]);
+//=> [{name: 'Tortoise'}, {place: 'Serenity'}, 5, 4, 3]
 ```
 #### ``contains()``
 The contains method determines whether the collection contains a given item:
